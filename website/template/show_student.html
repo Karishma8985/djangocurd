@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Student Data</title>
+</head>
+<body>
+    <div class="container">
+        <div row="1">
+            <h1 class="text-center">Student Data</h1>
+        </div>
+        <div row="2">
+            <table class="table table-bordered table-striped table-info">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Picture</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                            
+                        {% for s in student %}
+                        <tr>
+                            <td>{{s.id}}</td>
+                            <td>{{s.name}}</td>
+                            <td>{{s.age}}</td>
+                            <td>{{s.gender}}</td>
+                            <td>{{s.address}}</td>
+                            <td>{{s.phone}}</td>
+                            <td>{{s.email}}</td>
+                            <td><img src="{{s.pics}}" width="100" height="100"></td>
+                            <td><a href="/edit_student/{{s.id}}">Edit</a></td>
+                        <td><a href="/delete_student/{{s.id}}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                        
+            </table>
+</body>
+</html>

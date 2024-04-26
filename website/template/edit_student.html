@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student edit Form</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body{
+            margin: 250;
+            padding: 250;
+            background-color: rgb(254, 155, 170);
+            color: rgb(219, 15, 15);
+        }
+        h1{
+            text-align: center;
+        }
+        .container{
+            margin-top: 100px;
+            margin-bottom: 100px;
+            background-color: rgb(230, 240, 161);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .form-control {
+            margin-bottom: 20px;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background-color: rgb(218, 210, 75);
+            color: rgb(12, 149, 67);
+        }   
+        
+    </style>
+</head>
+<body>
+    <div class="container col-md-6">
+        <div row="1">
+            <h1>Student data edit Form</h1>
+        </div>
+        <div row="2">
+            <form action="/update_student/{{student.id}}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+        <div class="form-group">
+            <label for="nameid">Name</label>
+            <input type="text" class="form-control" id="nameid" name="uname"  value="{{student.name}}" />
+        </div>
+        
+        <div class="form-group">
+            <label for="ageid">Age</label>
+            <input type="number" class="form-control" id="ageid" name="age" value="{{student.age}}" />
+          </div>
+            
+        <div class="form-group">
+          <label for="emailid">Email address</label>
+          <input type="email" class="form-control" id="emailid" name="email" value="{{student.email}}" />
+        </div>
+        
+        <div class="form-group">
+          <label for="passwordid">Password</label>
+          <input type="password" class="form-control" id="passwordid" name="password" value="{{student.password}}"/>
+        </div>
+        
+        <div class="form-group">
+          <label for="phoneid">Phone</label>
+          <input type="number" class="form-control" id="phoneid" name="phone" value="{{student.phone}}" />
+        </div>
+        
+        <div class="form-group">
+          <label for="addressid">Address</label>
+          <textarea class="form-control" id="addressid" name="address" value="{{student.address}}" /></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="genderid">Gender</label>
+            <input type="radio" id="genderid" name="gender" value="Male">Male
+            <input type="radio" id="genderid" name="gender" value="Female">Female
+            <input type="radio" id="genderid" name="gender" value="Others">Others
+        </div>
+            
+        <div class="form-group">
+            <input type="file" class="form-control-file" id="fileid" name="pics">
+            
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-info">Update</button>
+        </div>
+      </form>
+      </div>
+
+      {% for msg in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Hey !</strong> {{msg}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+  {% endfor %}
+</body>
+</html>
